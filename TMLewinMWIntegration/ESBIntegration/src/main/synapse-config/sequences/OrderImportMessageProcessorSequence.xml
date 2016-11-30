@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="OrderImportMessageProcessorSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="MessageIn" level="custom">
+        <property name="Message Recieved From Processor" value="Success"/>
+    </log>
+    <fileconnector.send>
+        <address>sftp://jagath:123456@localhost/www/connector</address>
+    </fileconnector.send>
+</sequence>

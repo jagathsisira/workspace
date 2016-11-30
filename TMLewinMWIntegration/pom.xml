@@ -10,6 +10,8 @@
   <description>TMLewinMWIntegration</description>
   <modules>
     <module>ESBIntegration</module>
+    <module>ConnectorExporter</module>
+    <module>TMLewinCompositeApp</module>
   </modules>
   <build>
     <plugins>

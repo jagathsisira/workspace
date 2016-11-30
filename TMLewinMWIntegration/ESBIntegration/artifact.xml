@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts/>
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="OrderImportInboundEndpoint" groupId="com.tryzens.tmlewin.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/OrderImportInboundEndpoint.xml</file>
+    </artifact>
+    <artifact name="OrderImportSequenceMain" groupId="com.tryzens.tmlewin.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/OrderImportSequenceMain.xml</file>
+    </artifact>
+    <artifact name="OrderImportMessageStore" groupId="com.tryzens.tmlewin.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/OrderImportMessageStore.xml</file>
+    </artifact>
+    <artifact name="OrderImportMessageProcessorSequence" groupId="com.tryzens.tmlewin.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/OrderImportMessageProcessorSequence.xml</file>
+    </artifact>
+    <artifact name="OrderImportMessageProcessorSequence" groupId="com.tryzens.tmlewin.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/OrderImportMessageProcessorSequence.xml</file>
+    </artifact>
+    <artifact name="OrderImportMessageProcessor" groupId="com.tryzens.tmlewin.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/OrderImportMessageProcessor.xml</file>
+    </artifact>
+</artifacts>
