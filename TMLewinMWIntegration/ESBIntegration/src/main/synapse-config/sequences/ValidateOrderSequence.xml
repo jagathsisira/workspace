@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="ValidateOrderSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory media-type="xml">
+        <format>
+            <p:GetOrder xmlns:p="http://ws.wso2.org/dataservice">
+                <p:ORDER_NO>$1</p:ORDER_NO>
+            </p:GetOrder>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="//*[local-name()='order']/@order-no"/>
+        </args>
+    </payloadFactory>
+    <log description="GetOrderPayload" level="full">
+        <property name="Requesting DSS" value="Get Order"/>
+    </log>
+    <call>
+        <endpoint key="CheckOrderEP"/>
+    </call>
+    <log description="Get Order Response" level="full">
+        <property name="DSS Endpoint" value="Response"/>
+    </log>
+    <property description="SetOrderStatus" expression="//*[local-name()='OrderStatus']/text()" name="OrderStatus" scope="default" type="STRING"/>
+    <log description="LogOrderStatus" level="custom">
+        <property expression="get-property('OrderStatus')" name="Order Status"/>
+    </log>
+</sequence>

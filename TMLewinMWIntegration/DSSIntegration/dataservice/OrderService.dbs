@@ -1,0 +1,92 @@
+<data name="OrderService" serviceGroup="" serviceNamespace="">
+    <description/>
+    <config id="OrderDS">
+        <property name="org.wso2.ws.dataservice.user">root</property>
+        <property name="org.wso2.ws.dataservice.password">root</property>
+        <property name="org.wso2.ws.dataservice.protocol">jdbc:mysql://localhost:3306/tmlewin?useSSL=false</property>
+        <property name="org.wso2.ws.dataservice.driver">com.mysql.jdbc.Driver</property>
+    </config>
+    <query id="CheckOrder" useConfig="OrderDS">
+        <sql>SELECT ORDER_NO,ORDER_STATUS FROM ORDERS WHERE ORDER_NO =:ORDER_NO</sql>
+        <param name="ORDER_NO" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <result element="Orders" rowName="OrderRow" outputType="XML">
+            <element column="ORDER_NO" name="OrderNumber" exportType="SCALAR" xsdType="xs:string"/>
+            <element column="ORDER_STATUS" name="OrderStatus" exportType="SCALAR" xsdType="xs:string"/>
+        </result>
+    </query>
+    <query id="InsertOrder" useConfig="OrderDS">
+        <sql>INSERT INTO ORDERS (ORDER_NO, ORDER_DATE, ORDER_STATUS, STORE_CODE, CURRENCY, CUSTOMER_NO, CUSTOMER_NAME, CUSTOMER_EMAIL, PAYMENT_TYPE,REQUEST_ID, REQUEST_TOKEN, CREATED_DATE,UPDATED_DATE) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);</sql>
+        <param name="ORDER_NO" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="ORDER_DATE" paramType="SCALAR" sqlType="TIMESTAMP" type="IN"/>
+        <param name="ORDER_STATUS" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="STORE_CODE" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="CURRENCY" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="CUSTOMER_NO" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="CUSTOMER_NAME" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="CUSTOMER_EMAIL" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="PAYMENT_TYPE" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="REQUEST_ID" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="REQUEST_TOKEN" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="CREATED_DATE" paramType="SCALAR" sqlType="TIMESTAMP" type="IN"/>
+        <param name="UPDATED_DATE" paramType="SCALAR" sqlType="TIMESTAMP" type="IN"/>
+    </query>
+    <operation name="GetOrder">
+        <call-query href="CheckOrder">
+            <with-param name="ORDER_NO" query-param="ORDER_NO"/>
+        </call-query>
+    </operation>
+    <operation name="InsertOrder">
+        <call-query href="InsertOrder">
+            <with-param name="ORDER_NO" query-param="ORDER_NO"/>
+            <with-param name="ORDER_DATE" query-param="ORDER_DATE"/>
+            <with-param name="ORDER_STATUS" query-param="ORDER_STATUS"/>
+            <with-param name="STORE_CODE" query-param="STORE_CODE"/>
+            <with-param name="CURRENCY" query-param="CURRENCY"/>
+            <with-param name="CUSTOMER_NO" query-param="CUSTOMER_NO"/>
+            <with-param name="CUSTOMER_NAME" query-param="CUSTOMER_NAME"/>
+            <with-param name="CUSTOMER_EMAIL" query-param="CUSTOMER_EMAIL"/>
+            <with-param name="PAYMENT_TYPE" query-param="PAYMENT_TYPE"/>
+            <with-param name="REQUEST_ID" query-param="REQUEST_ID"/>
+            <with-param name="REQUEST_TOKEN" query-param="REQUEST_TOKEN"/>
+            <with-param name="CREATED_DATE" query-param="CREATED_DATE"/>
+            <with-param name="UPDATED_DATE" query-param="UPDATED_DATE"/>
+        </call-query>
+    </operation>
+    <query id="InsertOrderLines" useConfig="OrderDS">
+        <sql>Insert into ORDER_LINE (ORDER_NO, LINE_NO, LINE_STATUS, STYLE_ID, PRODUCT_ID, ITEM_QUANTITY, SHIPMENT_ID, TAX_RATE, TAX_BASIS, TAX_AMOUNT, NET_PRICE, BASE_PRICE, GROSS_PRICE, CREATED_DATE, UPDATED_DATE) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);</sql>
+        <param name="ORDER_NO" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="LINE_NO" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+        <param name="LINE_STATUS" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="STYLE_ID" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="PRODUCT_ID" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="ITEM_QUANTITY" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+        <param name="SHIPMENT_ID" paramType="SCALAR" sqlType="STRING" type="IN"/>
+        <param name="TAX_RATE" paramType="SCALAR" sqlType="DOUBLE" type="IN"/>
+        <param name="TAX_BASIS" paramType="SCALAR" sqlType="DOUBLE" type="IN"/>
+        <param name="TAX_AMOUNT" paramType="SCALAR" sqlType="DOUBLE" type="IN"/>
+        <param name="NET_PRICE" paramType="SCALAR" sqlType="DOUBLE" type="IN"/>
+        <param name="BASE_PRICE" paramType="SCALAR" sqlType="DOUBLE" type="IN"/>
+        <param name="GROSS_PRICE" paramType="SCALAR" sqlType="DOUBLE" type="IN"/>
+        <param name="CREATED_DATE" paramType="SCALAR" sqlType="TIMESTAMP" type="IN"/>
+        <param name="UPDATED_DATE" paramType="SCALAR" sqlType="TIMESTAMP" type="IN"/>
+    </query>
+    <operation name="InsertOrderLines">
+        <call-query href="InsertOrderLines">
+            <with-param name="ORDER_NO" query-param="ORDER_NO"/>
+            <with-param name="LINE_NO" query-param="LINE_NO"/>
+            <with-param name="LINE_STATUS" query-param="LINE_STATUS"/>
+            <with-param name="STYLE_ID" query-param="STYLE_ID"/>
+            <with-param name="PRODUCT_ID" query-param="PRODUCT_ID"/>
+            <with-param name="ITEM_QUANTITY" query-param="ITEM_QUANTITY"/>
+            <with-param name="SHIPMENT_ID" query-param="SHIPMENT_ID"/>
+            <with-param name="TAX_RATE" query-param="TAX_RATE"/>
+            <with-param name="TAX_BASIS" query-param="TAX_BASIS"/>
+            <with-param name="TAX_AMOUNT" query-param="TAX_AMOUNT"/>
+            <with-param name="NET_PRICE" query-param="NET_PRICE"/>
+            <with-param name="BASE_PRICE" query-param="BASE_PRICE"/>
+            <with-param name="GROSS_PRICE" query-param="GROSS_PRICE"/>
+            <with-param name="CREATED_DATE" query-param="CREATED_DATE"/>
+            <with-param name="UPDATED_DATE" query-param="UPDATED_DATE"/>
+        </call-query>
+    </operation>
+</data>

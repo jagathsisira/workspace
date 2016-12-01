@@ -17,4 +17,19 @@
     <artifact name="OrderImportMessageProcessor" groupId="com.tryzens.tmlewin.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/message-processors/OrderImportMessageProcessor.xml</file>
     </artifact>
+    <artifact name="CheckOrderEP" groupId="com.tryzens.tmlewin.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CheckOrderEP.xml</file>
+    </artifact>
+    <artifact name="ValidateOrderSequence" groupId="com.tryzens.tmlewin.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/ValidateOrderSequence.xml</file>
+    </artifact>
+    <artifact name="ValidOrderStoreSequence" groupId="com.tryzens.tmlewin.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/ValidOrderStoreSequence.xml</file>
+    </artifact>
+    <artifact name="InvalidOrderSequence" groupId="com.tryzens.tmlewin.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/InvalidOrderSequence.xml</file>
+    </artifact>
+    <artifact name="TransformOrderSequence" groupId="com.tryzens.tmlewin.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/TransformOrderSequence.xml</file>
+    </artifact>
 </artifacts>

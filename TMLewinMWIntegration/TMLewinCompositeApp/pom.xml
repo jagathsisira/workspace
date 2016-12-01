@@ -9,15 +9,33 @@
   <name>TMLewinCompositeApp</name>
   <description>TMLewinCompositeApp</description>
   <properties>
+    <com.tryzens.tmlewin.dataservice_._OrderService>capp/DataServicesServer</com.tryzens.tmlewin.dataservice_._OrderService>
+    <com.tryzens.tmlewin.inbound-endpoint_._OrderImportInboundEndpoint>capp/EnterpriseServiceBus</com.tryzens.tmlewin.inbound-endpoint_._OrderImportInboundEndpoint>
+    <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
     <com.tryzens.tmlewin.sequence_._OrderImportMessageProcessorSequence>capp/EnterpriseServiceBus</com.tryzens.tmlewin.sequence_._OrderImportMessageProcessorSequence>
     <com.tryzens.tmlewin.message-processors_._OrderImportMessageProcessor>capp/EnterpriseServiceBus</com.tryzens.tmlewin.message-processors_._OrderImportMessageProcessor>
-    <com.tryzens.tmlewin.message-store_._OrderImportMessageStore>capp/EnterpriseServiceBus</com.tryzens.tmlewin.message-store_._OrderImportMessageStore>
-    <com.tryzens.tmlewin.inbound-endpoint_._OrderImportInboundEndpoint>capp/EnterpriseServiceBus</com.tryzens.tmlewin.inbound-endpoint_._OrderImportInboundEndpoint>
     <com.tryzens.tmlewin.lib_._fileconnector-connector>capp/EnterpriseServiceBus</com.tryzens.tmlewin.lib_._fileconnector-connector>
     <com.tryzens.tmlewin.sequence_._OrderImportSequenceMain>capp/EnterpriseServiceBus</com.tryzens.tmlewin.sequence_._OrderImportSequenceMain>
-    <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
+    <com.tryzens.tmlewin.sequence_._ValidateOrderSequence>capp/EnterpriseServiceBus</com.tryzens.tmlewin.sequence_._ValidateOrderSequence>
+    <com.tryzens.tmlewin.endpoint_._CheckOrderEP>capp/EnterpriseServiceBus</com.tryzens.tmlewin.endpoint_._CheckOrderEP>
+    <com.tryzens.tmlewin.sequence_._ValidOrderStoreSequence>capp/EnterpriseServiceBus</com.tryzens.tmlewin.sequence_._ValidOrderStoreSequence>
+    <com.tryzens.tmlewin.sequence_._GetOrderSequence>capp/EnterpriseServiceBus</com.tryzens.tmlewin.sequence_._GetOrderSequence>
+    <com.tryzens.tmlewin.sequence_._InvalidOrderSequence>capp/EnterpriseServiceBus</com.tryzens.tmlewin.sequence_._InvalidOrderSequence>
+    <com.tryzens.tmlewin.message-store_._OrderImportMessageStore>capp/EnterpriseServiceBus</com.tryzens.tmlewin.message-store_._OrderImportMessageStore>
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>com.tryzens.tmlewin.lib</groupId>
+      <artifactId>fileconnector-connector</artifactId>
+      <version>2.0.4</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.tryzens.tmlewin.dataservice</groupId>
+      <artifactId>OrderService</artifactId>
+      <version>1.0.0</version>
+      <type>dbs</type>
+    </dependency>
     <dependency>
       <groupId>com.tryzens.tmlewin.inbound-endpoint</groupId>
       <artifactId>OrderImportInboundEndpoint</artifactId>
@@ -37,8 +55,8 @@
       <type>xml</type>
     </dependency>
     <dependency>
-      <groupId>com.tryzens.tmlewin.sequence</groupId>
-      <artifactId>OrderImportMessageProcessorSequence</artifactId>
+      <groupId>com.tryzens.tmlewin.endpoint</groupId>
+      <artifactId>CheckOrderEP</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
@@ -49,10 +67,28 @@
       <type>xml</type>
     </dependency>
     <dependency>
-      <groupId>com.tryzens.tmlewin.lib</groupId>
-      <artifactId>fileconnector-connector</artifactId>
-      <version>2.0.4</version>
-      <type>zip</type>
+      <groupId>com.tryzens.tmlewin.sequence</groupId>
+      <artifactId>OrderImportMessageProcessorSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.tryzens.tmlewin.sequence</groupId>
+      <artifactId>ValidateOrderSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.tryzens.tmlewin.sequence</groupId>
+      <artifactId>InvalidOrderSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.tryzens.tmlewin.sequence</groupId>
+      <artifactId>ValidOrderStoreSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
     </dependency>
   </dependencies>
   <repositories>

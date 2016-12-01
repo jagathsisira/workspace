@@ -11,6 +11,8 @@
   <modules>
     <module>ESBIntegration</module>
     <module>ConnectorExporter</module>
+    <module>DSSIntegration</module>
+    <module>DSSCompositeApp</module>
     <module>TMLewinCompositeApp</module>
   </modules>
   <build>

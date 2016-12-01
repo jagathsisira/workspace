@@ -9,7 +9,7 @@
         <parameter name="transport.vfs.AutoLockRelease">false</parameter>
         <parameter name="transport.vfs.ActionAfterFailure">MOVE</parameter>
         <parameter name="transport.vfs.ActionAfterProcess">MOVE</parameter>
-        <parameter name="transport.vfs.FileURI">sftp://jagath:123456@localhost/www/in</parameter>
+        <parameter name="transport.vfs.FileURI">sftp://tryzens:123456@localhost/www/in</parameter>
         <parameter name="transport.vfs.MoveAfterFailure">sftp://jagath:123456@localhost/www/error</parameter>
         <parameter name="transport.vfs.DistributedLock">false</parameter>
         <parameter name="transport.vfs.FileNamePattern">.*.xml</parameter>

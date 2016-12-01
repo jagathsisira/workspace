@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="OrderService" groupId="com.tryzens.tmlewin.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/OrderService.dbs</file>
+    </artifact>
+    <artifact name="OrderService" groupId="com.tryzens.tmlewin.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/OrderService.dbs</file>
+    </artifact>
+</artifacts>

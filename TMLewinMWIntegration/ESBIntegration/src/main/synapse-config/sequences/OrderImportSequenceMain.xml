@@ -3,5 +3,15 @@
     <log description="FileInputLog" level="custom">
         <property name="File Read" value="Successful"/>
     </log>
-    <store messageStore="OrderImportMessageStore"/>
+    <enrich>
+        <source clone="true" type="envelope"/>
+        <target property="OriginalPayload" type="property"/>
+    </enrich>
+    <sequence key="ValidateOrderSequence"/>
+    <filter description="" regex="^OPEN$" source="get-property('OrderStatus')">
+        <then>
+            <sequence key="ValidOrderStoreSequence"/>
+        </then>
+        <else/>
+    </filter>
 </sequence>

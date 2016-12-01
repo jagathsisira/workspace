@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="ValidOrderStoreSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <enrich description="SetOriginalPayload">
+        <source property="OriginalPayload" type="property"/>
+        <target type="envelope"/>
+    </enrich>
+    <store description="ValidOrderStore" messageStore="OrderImportMessageStore"/>
+    <log description="MessageStoreLog" level="custom">
+        <property name="MessageStored" value="Success"/>
+    </log>
+</sequence>
